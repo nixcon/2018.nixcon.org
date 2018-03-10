@@ -19,4 +19,4 @@ The site is build with [Hakyll](https://jaspervdj.be/hakyll/)
 ## Travis Deployment
 
 Go to GitHub.com -> Settings -> Applications -> Personal Access Tokens — > Create new token, and copy it to your clipboard
-` travis encrypt -r cko/nixcon2018 GH_TOKEN=[your token]`
+` travis encrypt -r zimbatm/nixcon2018 GH_TOKEN=[your token]`
