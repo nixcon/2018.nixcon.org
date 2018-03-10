@@ -4,6 +4,7 @@
 
 copied from https://github.com/cko/nixcon2017
 
+
 ## Build
 
 The site is build with [Hakyll](https://jaspervdj.be/hakyll/)
