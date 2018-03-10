@@ -1,0 +1,130 @@
+<script type="text/javascript" src="js/handlebars-v4.0.10.js"></script>
+
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12">
+      <h2 class="header center grey-text text-darken-2">Participants</h2>
+      <h4 class="header center grey-text text-darken-2">(who agreed to be on this site)</h4>
+    </div>
+  </div>
+
+  <div class="row">
+  <div class="col s12 m6">
+    <a href="?conference">
+      <h5 class="header center" id="sum_conference"/>
+    </a>
+  </div>
+  <div class="col s12 m6">
+    <a href="?hackathon">
+      <h5 class="header center" id="sum_hackathon"/>
+    </a>
+  </div>
+  </div>
+
+  <div id="participants" class="row">
+
+  </div>
+</div>
+
+
+<script id="participant-template" type="text/x-handlebars-template">
+  <div class="col s6 m3 l2 xl2">
+    <div class="card small">
+      <div class="card-image">
+        <img class="activator" src="{{urls.photo}}">
+        {{#isOrga roles}}
+           <div class="ribbon ribbon-orga">Orga</div>
+        {{/isOrga}}
+        {{#isSpeaker roles}}
+           <div class="ribbon ribbon-speaker">Speaker</div>
+        {{/isSpeaker}}
+      </div>
+      <div class="card-content">
+        <span class="card-title activator">
+          {{name}}
+          {{#if about }}
+            <i class="material-icons right">more_vert</i>
+          {{/if}}
+        </span>
+        {{#if company}}
+           <p>{{company}}</p>
+        {{/if}}
+      </div>
+      <div class="card-reveal">
+        <span class="card-title activator">{{name}}<i class="material-icons right">close</i></span>
+        {{#if about}}
+        <p>{{about}}</p>
+        {{/if}}
+      </div>
+      <div class="card-action">
+        {{#if urls.homepage}}
+        <a href="{{urls.homepage}}"><i class="fa fa-home fa-fw"/></a>
+        {{/if}}
+        {{#if urls.github}}
+        <a href="{{urls.github}}"><i class="fa fa-github fa-fw"/></a>
+        {{/if}}
+        {{#if urls.twitter}}
+        <a href="{{urls.twitter}}"><i class="fa fa-twitter fa-fw"/></a>
+        {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="text/javascript">
+window.onload = function() {
+  var href = location.href;
+  var filter = function() {return true;};
+  if (href.indexOf("?") !== -1){
+    filterRaw = href.substring(href.indexOf("?")+1);
+    if (filterRaw == "conference"){
+      filter = function(participant) { return participant.when.conference; };
+    }
+    if (filterRaw == "hackathon"){
+      filter = function(participant) { return participant.when.hackathon; };
+    }
+  }
+
+  $.getJSON("https://registration.nixcon2018.org/static/participants.json", function(data) {
+    var items = [];
+    var sum_conference = 0;
+    var sum_hackathon = 0;
+    data.sort(function (a, b) {
+      return a.name.localeCompare(b.name);
+    });
+    var source = $("#participant-template").html();
+    var template = Handlebars.compile(source);
+
+
+    $.each(data, function(index, participant) {
+      if(participant.name && filter(participant)) {
+        if ( participant.urls.photo == undefined || participant.urls.photo == "/participants/images/nophoto.png"){
+          participant.urls.photo = "https://avatars.githubusercontent.com/" + participant.urls.github.split("/")[3];
+        }
+        var card = template(participant);
+        items.push(card);
+      }
+      if(participant.when.conference) sum_conference++;
+      if(participant.when.hackathon) sum_hackathon++;
+    });
+    $("#participants").append(items.join(""));
+    $("#sum_conference").append("Conference: " + sum_conference + " Participants (max. 90)");
+    $("#sum_hackathon").append("Hackathon: " + sum_hackathon + " Participants (max. 32)");
+  });
+  Handlebars.registerHelper("isSpeaker", function(myArray,options) {
+    if (myArray !== undefined && myArray.indexOf("speaker") > -1) {
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
+    }
+  });
+  Handlebars.registerHelper("isOrga", function(myArray,options) {
+    if (myArray !== undefined && myArray.indexOf("orga") > -1) {
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
+    }
+  });
+};
+</script>

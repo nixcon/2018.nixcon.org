@@ -1,0 +1,243 @@
+<script type="text/javascript" src="js/handlebars-v4.0.10.js"></script>
+<div class="container">
+<div id="nixcon-logo">
+  <img src="/images/nixos-logo.png" class="responsive-img nixos-logo" width="300" style="margin-top: 2em; margin-bottom: 0em;" />
+</div>
+
+  <div class="row">
+    <div class="col s12 m12">
+      <h1 class="header center grey-text text-darken-2">NixCon 2018</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s6 m2 offset-m2">
+      <div class="icon-block">
+        <div class="center grey-text text-darken-2"><i class="fa fa-calendar"></i></div>
+        <h5 class="center grey-text text-darken-2 header">September 2018</h5>
+      </div>
+    </div>
+
+    <div class="col s6 m2">
+      <div class="icon-block">
+        <div class="center grey-text text-darken-2"><i class="fa fa-comments"></i></div>
+        <h5 class="center grey-text text-darken-2 header">Talks Discussions Hackathon</h5>
+      </div>
+    </div>
+
+    <div class="col s6 m2">
+      <div class="icon-block">
+        <div class="center grey-text text-darken-2"><i class="fa fa-users"></i></div>
+        <h5 class="center grey-text text-darken-2 header">100 people</h5>
+      </div>
+    </div>
+
+    <div class="col s6 m2">
+      <div class="icon-block">
+        <div class="center grey-text text-darken-2"><i class="fa fa-map-marker"></i></div>
+        <h5 class="center grey-text text-darken-2 header">London</h5>
+      </div>
+    </div>
+
+  </div>
+  <br/>
+</div>
+
+
+<a name="about"></a>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12">
+      <h3 class="header center grey-text text-darken-2">About</h3>
+      <p class="center flow-text" style="text-align: justify">
+        NixCon is a community-oriented conference for contributors and users of <a href="http://nixos.org/nix/">Nix</a> and <a href="http://nixos.org/">NixOS</a>.
+        It's about sharing experiences, inspiring people and discussing future development.
+        We would like to learn about how you use Nix and NixOS in your organization and what you are currently working on.
+        The growth of NixOS as a project brings its own challenges and we would like to know how you think the
+        user experience can be improved and how NixOS can be scaled.
+      </p>
+    </div>
+  </div>
+</div>
+
+<a name="program"></a>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12">
+      <h3 class="header center grey-text text-darken-2">Program</h3>
+      <h1>TODO</h1>
+    </div>
+  </div>
+</div>
+
+<script id="talk-template" type="text/x-handlebars-template">
+  <li>
+    <div class="collapsible-header grey-text text-darken-2">
+      <span class="time">
+         {{#timeprint start duration }}
+         {{/timeprint}}
+      </span>
+      <span {{#neq title "Lunch Break" }}
+               {{#neq title "Breakfast" }}
+                  {{#neq title "Break" }}
+                     class="headline"
+                  {{/neq}}
+              {{/neq}}
+            {{/neq}}>
+            {{ title }} {{#if subtitle}} – {{ subtitle }} {{/if}}
+     </span>
+     <span>
+         {{#if persons}}
+            by {{#each persons}}
+                {{ public_name }} {{#unless @last}} and {{/unless}}
+            {{/each}}
+         {{/if}}
+      </span>
+      <span>{{#if video}}<i class="fa fa-youtube"></i>{{/if}}</span>
+      <span>{{#if slides}}<i class="fa fa-paperclip"></i>{{/if}}</span>
+
+    </div>
+    <div class="collapsible-body">
+      <p>{{{ abstract }}}</p>
+      <p>{{{ description }}}</p>
+      <p>{{#each links}}<a href="{{ this.url }}">{{ this.title }}</a><br/> {{/each}}</p>
+      <p>{{#each attachments}}<a href="https://schedule.nixcon2018.org/{{ this.url }}">{{ this.title }}</a><br/> {{/each}}</p>
+    </div>
+  </li>
+</script>
+
+
+<script type="text/javascript">
+window.onload = function() {
+  $.getJSON("https://schedule.nixcon2018.org/en/nixcon2018/public/schedule.json", function(data) {
+    var talks_saturday = data.schedule.conference.days[0].rooms.Unterwelt;
+    var talks_sunday = data.schedule.conference.days[1].rooms.Unterwelt;
+    generate_talk_entries(talks_saturday, "#saturday")
+    generate_talk_entries(talks_sunday, "#sunday");
+  });
+
+  Handlebars.registerHelper('timeprint', function(startString, length) {
+    var startArray = startString.split(':');
+    var duration =  length.split(':');
+    var startTime = new Date (2018, 10, 28, startArray[0], startArray[1]);
+    var endTime = new Date (2018, 10, 28, startTime.getHours() + parseInt(duration[0]), startTime.getMinutes() + parseInt(duration[1]));
+    var result = startString +  ' – ' + endTime.getHours() + ':' +  ("0" + (endTime.getMinutes())).slice(-2);
+    return new Handlebars.SafeString(result);
+  });
+  Handlebars.registerHelper('neq', function(val1, val2, block) {
+    if (val1 != val2){
+      return block.fn(this);
+    }
+  });
+  Handlebars.registerHelper('eq', function(val1, val2, block) {
+    if (val1 == val2){
+      return block.fn(this);
+    }
+  });
+}
+
+var generate_talk_entries = function (talks, day_id){
+  var items = [];
+  talks.forEach(function(talk, index){
+    var source = $("#talk-template").html();
+    var template = Handlebars.compile(source);
+    var slidelinks = talk.links.filter( function (link){return link.title.indexOf('Slides') !== -1});
+    var videolink = talk.links.filter( function (link){return link.title.indexOf('Video') !== -1});
+    if (talk.attachments.length > 0 || slidelinks.length > 0){ talk["slides"] = true; }
+    if (videolink.length > 0){ talk["video"] = true; }
+    var entry = template(talk);
+    items.push(entry);
+  });
+  $(day_id).append(items.join(""));
+}
+  </script>
+
+<a name="hackathon"></a>
+<div class="container">
+  <div class="col s12 m12">
+    <h3 class="header center grey-text text-darken-2">Hackathon</h3>
+  </div>
+  <div class="row">
+    <div class="col s12 m12">TODO</div>
+  </div>
+  <div class="row">
+    <div class="col s12 m12">
+      <h4 class="header center grey-text text-darken-2">Proposed Hackathon Topics</h4>
+    </div>
+  </div>
+  <div class="row" id="topics">
+    <div class="col s12 m12">
+      <h5>We have not yet any proposed topic</h5>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s12 m12">
+        <h5 class="header center grey-text text-darken-2">Want to propose your own topic?</h5>
+        You can propose new topics via the following workflow:
+        <ol>
+            <li>fork the page repository <a href="https://github.com/zimbatm/nixcon2018">zimbatm/nixcon2018</a></li>
+            <li>add your topic to the file <tt>./hackathon-topics.json</tt>
+                <ul>
+                    <li>the fields <tt>homepage</tt> and <tt>required_experience</tt> are optional and default to <tt>null</tt></li>
+                </ul>
+            </li>
+            <li>create a pull request</li>
+        </ol>
+        Or send and e-mail to orgateam@nixcon2018.org
+    </div>
+  </div>
+</div>
+
+<script id="topic-template" type="text/x-handlebars-template">
+  <div class="col s12 m6 l6"><div class="card medium">
+    <div class="card-content grey-text text-darken-2">
+      <span class="card-title">{{title}}</span>
+    <p><b>Host:</b> {{host}}</p>
+    {{#if homepage}}
+    <a href="{{homepage}}">{{homepage}}</a>
+    {{/if}}
+    <div><b>Description:</b> {{{description}}}</div>
+    {{#if required_experience}}
+    <p><b>Required Experience:</b><br\> {{required_experience}}</p>
+    {{/if}}
+  </div>
+  </div></div>
+</script>
+
+<script>
+ $( document ).ready(function() {
+    $.getJSON( "./hackathon-topics.json", function( data ) {
+        function compare(a,b) {
+            if (a.title < b.title)
+                return -1;
+            if (a.title > b.title)
+                return 1;
+            return 0;
+        }
+        data.sort(compare);
+        if(data.length > 0){
+            var source = $("#topic-template").html();
+            var template = Handlebars.compile(source);
+            var items = [];
+            $.each( data, function(key, topic) {
+                items.push(template(topic));});
+            $("#topics").html(items.join(''));
+        }
+    });
+ });
+</script>
+
+
+<a name="sponsors"></a>
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12">
+      <h3 class="header center grey-text text-darken-2">Sponsors</h3>
+    </div>
+  </div>
+  <div class="row nixos-sponsor">
+    <div class="col s12 m6">
+      <h1>Please contact us!</h1>
+    </div>
+  </div>
+</div>

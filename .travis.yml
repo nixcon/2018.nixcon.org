@@ -1,0 +1,13 @@
+language: nix
+script: NIX_PATH=nixpkgs=https://github.com/NixOS/nixpkgs-channels/archive/8ed299faacbf8813fc47b4fca34f32b835d6481e.tar.gz nix-build
+after_success:
+- chmod +x ./travis-deployment/deploy-to-gh-pages.sh
+deploy:
+  provider: script
+  script: "./travis-deployment/deploy-to-gh-pages.sh"
+  skip_cleanup: true
+  branch: master
+env:
+  global:
+  - GH_REF: github.com/cko/nixcon2017.git
+  - secure: WrQhaO2lq4g+w4yX4PkoBPMTb4a2hGsJGTu/Nn3NdjTPneJSshVwA8jxOw9rjsxAFiwGGWPt1FPVlxoRR878Z4Ar17zBMKhMQs3t8v53npEkIZiMQqzRtS2Z0Ams3DyI3mEOW4/W0AfgFMlptnuQNLFUcT5vqZwXnBLlPDmJM53gXXEQaFrkpg8UVwF/lUvtpD+mFN9y8tyhtHp/hhQjIbNQDsCRWOCzCp9Czr72YbUKcER7/TFDxXBvHdrfPoHct8vH+MqsPoYfaWVL+vsvs/Kodj+wEP0lvT1naDpIvpoZWuW8odPzl0k7jFchRFQ07PWDNEE2SVRibsCxHnnU2swvdOctDzSJG76ebag/u8VtkUoXZTvK5UUI5jXkkDr9GMZuvdHaisSSL9dxDRNaPzIiS3Bfaa7MD+ezkajzv9cMXiI/IVgFX+x9MuP8h07yPbM3scwTB/hI1Er4FovIYxfg+/3/vB9BroLflR+0NSqoh1YITl5xjyAHZjfZna77sPXb/4qX7YKQ4U8coAZLsgK63stmAiotI4yIAzeYs3BtRP5Va1ktbH7mGk56dYGVhK6mwCzM43vKRK4khBpGoPnYLLqo02Y4vrAhyJmmg6Stu0GcJGWyqSn1bMBD3SKppvAXi4OauUqq1nr6V/a6XPZltAq2UXU1R5eviMrDST4=

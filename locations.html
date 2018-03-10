@@ -1,0 +1,133 @@
+<script type="text/javascript" src="js/handlebars-v4.0.10.js"></script>
+
+<div class="container">
+  <div class="row">
+    <div class="col s12 m12">
+      <h3 class="header center grey-text text-darken-2">Locations</h3>
+    </div>
+  </div>
+  <a name="tng"></a>
+  <div class="row">
+    <div class="col s12 m12">
+      <h4 class="header center grey-text text-darken-2">Location Saturday &amp; Sunday (Conference)</h4>
+      <div class="map_wrapper">
+        <div class="map" id="tng-map"></div>
+        <div class="map_overlay">
+          <img class="responsive-img" src="images/TNG400x74.gif" style="width: 250px;" alt="TNG Technology Consulting">
+          <p class="lead">
+            Betastraße 13a<br/>
+            85774 Unterföhring<br/><br/>
+
+            Public Transport:<br/>
+            Unterföhring (S8), 12min walk<br/>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a name="cafe_netzwerk"></a>
+  <div class="row">
+    <div class="col s12 m12">
+      <h4 class="header center grey-text text-darken-2">Location Monday &amp; Tuesday (Hackathon)</h4>
+      <div class="map_wrapper">
+        <div class="map" id="cafe-map"></div>
+        <div class="map_overlay">
+          <p class="lead">
+            Café Netzwerk<br/>
+            Luisenstr. 11<br/>
+            80333 München<br/><br/>
+
+            Public Transport:<br/>
+            Königsplatz (U2)<br/>
+            Hauptbahnhof (any S-Bahn or U1/2/4/5), 10 min walk<br/>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="hotels" class="container">
+  <div class="row">
+    <div class="col s12 m12">
+      <h3 class="header center grey-text text-darken-2">Hotel Recommendations</h3>
+      <p>Unterfoehring, where the conference talks take place, is reachable via the S-Bahn S8 (suburban train). The S8 starts at the airport, goes through Unterföhring and continuous to the city center
+        (Ostbahnhof, Marienplatz, Karlsplatz, Hauptbahnhof/Main Station etc ). Any other accommodation nearby those stations would also be fine.</p>
+    </div>
+    <div class="row">
+      <div class="col s6 m3">
+        <div class="card small">
+          <div class="card-content">
+            <span class="card-title">Wombat`s City Hostel</span>
+            <ul>
+              <li>Distance to airport: 50min</li>
+              <li>Distance to conference location: 40min</li>
+              <li>Distance to hackathon location: 10min</li>
+              <li>Distance to city center: 0min</li>
+            </ul>
+          </div>
+          <div class="card-action">
+            <a href="https://www.google.de/maps/place/wombats+CITY+HOSTEL+MUNICH/@48.1388153,11.5602489,15z/data=!4m5!3m4!1s0x0:0x304b8ce771fef15d!8m2!3d48.1388153!4d11.5602489">Google Maps</a>
+          </div>
+        </div>
+      </div>
+      <div class="col s6 m3">
+        <div class="card small">
+          <div class="card-content">
+            <span class="card-title">The K Munich Unterfoehring</span>
+            <ul>
+              <li>Distance to airport: 30min</li>
+              <li>Distance to conference location: 3min</li>
+              <li>Distance to hackathon location: 35min</li>
+              <li>Distance to city center: 30min</li>
+            </ul>
+          </div>
+          <div class="card-action">
+            <a href="https://www.google.de/maps/place/Best+Western+Hotel+The+K/@48.1852446,11.6487083,17z/data=!4m12!1m6!3m5!1s0x479e74c05de3f58d:0x455f40e6b53b0b80!2sBest+Western+Hotel+The+K!8m2!3d48.185241!4d11.650897!3m4!1s0x479e74c05de3f58d:0x455f40e6b53b0b80!8m2!3d48.185241!4d11.650897">Google Maps</a>
+          </div>
+        </div>
+      </div>
+      <div class="col s6 m3">
+        <div class="card small">
+          <div class="card-content">
+            <span class="card-title">Motel One Munich City East</span>
+            <ul>
+              <li>Distance to airport: 40min</li>
+              <li>Distance to conference location: 35min</li>
+              <li>Distance to hackathon location: 20min</li>
+              <li>Distance to city center: 10min</li>
+            </ul>
+          </div>
+          <div class="card-action">
+            <a href="https://www.google.de/maps/place/Hotel+Motel+One+M%C3%BCnchen+City+Ost/@48.1320329,11.6070748,17z/data=!3m1!4b1!4m12!1m6!3m5!1s0x479e757d828b2e07:0x99a197cb13e46a8!2sHotel+Motel+One+M%C3%BCnchen+City+Ost!8m2!3d48.1320293!4d11.6092635!3m4!1s0x479e757d828b2e07:0x99a197cb13e46a8!8m2!3d48.1320293!4d11.6092635">Google Maps</a>
+          </div>
+        </div>
+      </div>
+      <div class="col s6 m3">
+        <div class="card small">
+          <div class="card-content">
+            <span class="card-title">ibis hotel Munich City East</span>
+            <ul>
+              <li>Distance to airport: 45min</li>
+              <li>Distance to conference location: 40min</li>
+              <li>Distance to hackathon location: 30min</li>
+              <li>Distance to city center: 20min</li>
+            </ul>
+          </div>
+          <div class="card-action">
+            <a href="https://www.google.de/maps/place/Hotel+ibis+M%C3%BCnchen+City+Ost/@48.1294228,11.6249085,17z/data=!3m1!4b1!4m12!1m6!3m5!1s0x479e755f89d2cac7:0x439ebe4ec9857c1d!2sHotel+ibis+M%C3%BCnchen+City+Ost!8m2!3d48.1294192!4d11.6270972!3m4!1s0x479e755f89d2cac7:0x439ebe4ec9857c1d!8m2!3d48.1294192!4d11.6270972">Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAglk6JlBoeA5hmWwdCBQ__rcZzbxvkB0"></script>
+<script>
+  google.maps.event.addDomListener(window, 'load', function(){
+    initialize('tng-map', 48.1861991, 11.6547822);
+    initialize('cafe-map', 48.144154, 11.562358);
+  });
+</script>
