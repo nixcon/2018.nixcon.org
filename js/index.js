@@ -1,12 +1,12 @@
-function emailReplace (){
+function emailReplace (elems){
     var m = "orgateam" + String.fromCharCode(64) + "nixcon2018.org";
-    document.getElementById("contactEmail").innerHTML = m;
-    document.getElementById("contactEmail").href = "mailto:" + m;
+    elems.attr("href", "mailto:" + m)
+    elems.text(m)
 }
 
 $( document ).ready(function(){
     $(".button-collapse").sideNav();
-    emailReplace();
+    emailReplace($("a.contact-email"));
 });
 
 
