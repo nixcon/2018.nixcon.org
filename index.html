@@ -1,4 +1,3 @@
-<script type="text/javascript" src="js/handlebars-v4.0.10.js"></script>
 <div class="container">
 <div id="nixcon-logo">
   <img src="/images/nixos-logo.png" class="responsive-img nixos-logo" width="300" style="margin-top: 2em; margin-bottom: 0em;" />
@@ -106,52 +105,6 @@
     </div>
   </li>
 </script>
-
-
-<script type="text/javascript">
-window.onload = function() {
-  $.getJSON("https://schedule.nixcon2018.org/en/nixcon2018/public/schedule.json", function(data) {
-    var talks_saturday = data.schedule.conference.days[0].rooms.Unterwelt;
-    var talks_sunday = data.schedule.conference.days[1].rooms.Unterwelt;
-    generate_talk_entries(talks_saturday, "#saturday")
-    generate_talk_entries(talks_sunday, "#sunday");
-  });
-
-  Handlebars.registerHelper('timeprint', function(startString, length) {
-    var startArray = startString.split(':');
-    var duration =  length.split(':');
-    var startTime = new Date (2018, 10, 28, startArray[0], startArray[1]);
-    var endTime = new Date (2018, 10, 28, startTime.getHours() + parseInt(duration[0]), startTime.getMinutes() + parseInt(duration[1]));
-    var result = startString +  ' – ' + endTime.getHours() + ':' +  ("0" + (endTime.getMinutes())).slice(-2);
-    return new Handlebars.SafeString(result);
-  });
-  Handlebars.registerHelper('neq', function(val1, val2, block) {
-    if (val1 != val2){
-      return block.fn(this);
-    }
-  });
-  Handlebars.registerHelper('eq', function(val1, val2, block) {
-    if (val1 == val2){
-      return block.fn(this);
-    }
-  });
-}
-
-var generate_talk_entries = function (talks, day_id){
-  var items = [];
-  talks.forEach(function(talk, index){
-    var source = $("#talk-template").html();
-    var template = Handlebars.compile(source);
-    var slidelinks = talk.links.filter( function (link){return link.title.indexOf('Slides') !== -1});
-    var videolink = talk.links.filter( function (link){return link.title.indexOf('Video') !== -1});
-    if (talk.attachments.length > 0 || slidelinks.length > 0){ talk["slides"] = true; }
-    if (videolink.length > 0){ talk["video"] = true; }
-    var entry = template(talk);
-    items.push(entry);
-  });
-  $(day_id).append(items.join(""));
-}
-  </script>
 
 <a name="hackathon"></a>
 <div class="container">
