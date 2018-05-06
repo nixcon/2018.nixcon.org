@@ -1,0 +1,10 @@
+language: nix
+script: nix-build
+deploy:
+  provider: script
+  script: "./deploy-to-gh-pages.sh"
+  skip_cleanup: true
+  branch: master
+env:
+  global:
+  - secure: nzn4nXbzT0CULxBSJC+9/L/enGfF14wKozEvpgHURG1FwaRwHx82tcjkDPrIN17tRSoWBZI7RQrUitqqcQunPFB2Q1WCleiO2tQmP+DM4DG4LmHPHiMsXSXIHKaAcyhPE2pKKMDCFjNc7hE+9G8vzFKUra/cFSTWlbYLlYNHWAUBb48M/e2h6ODNcVP4TT51DEoc85RRy2HH7RN6VRBmDw1/QHMDhJ50GrxwovL7c9I9iS96L9tgoLKmJNV/n2AcshZKDeufAWoBzF2tbwKykJAWBHiAG4xUMoPW5FwqDFgkwVtysjnP7U82B7lit60VZ0hBqzJOve7O9DH26bmSp5bMohxcGPGXQO9/eneGclHV3Zrhbvd3xEK/3t6gZYWK6pgh8JG/SOKLCuOJ8b1Lkn9djb0MBnQ4F3tfhaqpvxL9JaAN1aqKhMeLXST/0YFjOApXX1NYTmyvCOD2pGnHnvZ4DCBbx2EOlvCXN6ut0cfs9qjNdC6ziTjA0ikKfzgxqwkS8C8+mmkaP6dwdd6szOdH8VZlVgEev4trHmfzqXgvRKPMhbH1K/w03s38lz1nxoNQsAdqM7pL85m7TohKCasmhwRWxKw3fKyuQ4hOQlRJHpkiInu6XKHSj75yAEAX8dok5VSXHq7YVsMYptIhYc9YmFSajZEYICg4IRX9lHg=
