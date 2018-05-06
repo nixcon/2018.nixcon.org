@@ -1,4 +1,5 @@
-
+#!/usr/bin/env nix-shell
+#!nix-shell -i "runhaskell -Wall -no-user-package-db"
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
 import           Data.Monoid (mappend)
