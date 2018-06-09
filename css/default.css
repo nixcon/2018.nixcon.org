@@ -86,6 +86,12 @@ nav ul a {
   font-weight: 500;
 }
 
+#content a:hover,
+footer a:hover {
+  text-decoration: underline;
+}
+
+
 .card
   .card-action
   a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
@@ -102,6 +108,8 @@ h5.header {
 
 footer.page-footer {
   background-color: #616161;
+  color: white;
+  font-size: 1.3rem;
 }
 
 footer .container {
