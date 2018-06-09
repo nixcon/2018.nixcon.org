@@ -10,9 +10,13 @@
 #content .container {
   /* background-color: white; */
   background-color: white;
-  padding: 2rem;
+  padding: 2rem 4rem 2rem 4rem;
+  text-align: center;
 }
 
+.hidden {
+  display: none;
+}
 a.anchor {
   display: block;
   position: relative;
