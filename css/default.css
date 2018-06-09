@@ -11,12 +11,14 @@
   /* background-color: white; */
   background-color: white;
   padding: 2rem 4rem 2rem 4rem;
-  text-align: center;
 }
 
-.hidden {
-  display: none;
+@media only screen and (max-width: 499px) {
+  #content .container {
+    padding: 2rem;
+  }
 }
+
 a.anchor {
   display: block;
   position: relative;
@@ -94,7 +96,6 @@ nav ul a {
 footer a:hover {
   text-decoration: underline;
 }
-
 
 .card
   .card-action
