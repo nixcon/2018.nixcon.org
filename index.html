@@ -86,7 +86,7 @@
     <div class="col s6 m2">
       <div class="icon-block">
         <div class="center grey-text text-darken-2"><i class="fa fa-users"></i></div>
-        <h5 class="center grey-text text-darken-2 header">100 people</h5>
+        <h5 class="center grey-text text-darken-2 header">120 people / 60 during hackday</h5>
       </div>
     </div>
 
@@ -132,69 +132,21 @@
   <div class="row">
     <div class="col s12 m12">
       <h3 class="header center grey-text text-darken-2">Program - 25-26 (Thu, Fri) October</h3>
-      <p>We are collecting talk propositions until end of June 2018.</p>
+      <p>We are collecting talk propositions until end of July 2018.</p>
     </div>
   </div>
 </div>
 
-<script id="talk-template" type="text/x-handlebars-template">
-  <li>
-    <div class="collapsible-header grey-text text-darken-2">
-      <span class="time">
-         {{#timeprint start duration }}
-         {{/timeprint}}
-      </span>
-      <span {{#neq title "Lunch Break" }}
-               {{#neq title "Breakfast" }}
-                  {{#neq title "Break" }}
-                     class="headline"
-                  {{/neq}}
-              {{/neq}}
-            {{/neq}}>
-            {{ title }} {{#if subtitle}} – {{ subtitle }} {{/if}}
-     </span>
-     <span>
-         {{#if persons}}
-            by {{#each persons}}
-                {{ public_name }} {{#unless @last}} and {{/unless}}
-            {{/each}}
-         {{/if}}
-      </span>
-      <span>{{#if video}}<i class="fa fa-youtube"></i>{{/if}}</span>
-      <span>{{#if slides}}<i class="fa fa-paperclip"></i>{{/if}}</span>
-
-    </div>
-    <div class="collapsible-body">
-      <p>{{{ abstract }}}</p>
-      <p>{{{ description }}}</p>
-      <p>{{#each links}}<a href="{{ this.url }}">{{ this.title }}</a><br/> {{/each}}</p>
-      <p>{{#each attachments}}<a href="https://schedule.nixcon2018.org/{{ this.url }}">{{ this.title }}</a><br/> {{/each}}</p>
-    </div>
-  </li>
-</script>
-
 <a name="hackathon"></a>
 <div class="container">
   <div class="col s12 m12">
-    <h3 class="header center grey-text text-darken-2">Hackathon - 27 (Saturday) October</h3>
-  </div>
-  <div class="row">
-    <div class="col s12 m12">TODO</div>
+    <h3 class="header center grey-text text-darken-2">Hackday - 27 (Saturday) October</h3>
   </div>
   <div class="row">
     <div class="col s12 m12">
-      <h4 class="header center grey-text text-darken-2">Proposed Hackathon Topics</h4>
-    </div>
-  </div>
-  <div class="row" id="topics">
-    <div class="col s12 m12">
-      <h5>We have not yet any proposed topic</h5>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col s12 m12">
-      <h5 class="header center grey-text text-darken-2">Want to propose your own topic?</h5>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdzIdjL2stQeUH5ZWd7MyHwVsr-928sAwOD03BG1BgSvMSPkg/viewform" target="_blank">fill this form</a>
+      <p>The Hackday is a self-organizing day that comes after the conference. It gives us time to hack on project and ideas that might have come during the conference, network and discuss plans for the rest of the year.</p>
+
+      <p>This will happen at the same location as the conference but with a different table layout which limits the number of attendees to 60 people.</p>
     </div>
   </div>
 </div>
@@ -237,49 +189,16 @@
     <h3 class="header center grey-text text-darken-2">Registration</h3>
   </div>
   <div class="row">
-    <div class="col s12 m12">work in progress</div>
+    <div class="col s12 m12">
+      <p>Max 120 people</p>
+      <iframe src="https://eventbrite.co.uk/tickets-external?eid=45839886334&ref=etckt" frameborder="0" height="400" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe>
+    </div>
+    <div class="col s12 m12">
+      <p>Max 60 people</p>
+      <iframe src="https://eventbrite.co.uk/tickets-external?eid=46911879695&ref=etckt" frameborder="0" height="400" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe>
+    </div>
   </div>
 </div>
-
-<script id="topic-template" type="text/x-handlebars-template">
-  <div class="col s12 m6 l6"><div class="card medium">
-    <div class="card-content grey-text text-darken-2">
-      <span class="card-title">{{title}}</span>
-    <p><b>Host:</b> {{host}}</p>
-    {{#if homepage}}
-    <a href="{{homepage}}">{{homepage}}</a>
-    {{/if}}
-    <div><b>Description:</b> {{{description}}}</div>
-    {{#if required_experience}}
-    <p><b>Required Experience:</b><br\> {{required_experience}}</p>
-    {{/if}}
-  </div>
-  </div></div>
-</script>
-
-<script>
- $( document ).ready(function() {
-    $.getJSON( "./hackathon-topics.json", function( data ) {
-        function compare(a,b) {
-            if (a.title < b.title)
-                return -1;
-            if (a.title > b.title)
-                return 1;
-            return 0;
-        }
-        data.sort(compare);
-        if(data.length > 0){
-            var source = $("#topic-template").html();
-            var template = Handlebars.compile(source);
-            var items = [];
-            $.each( data, function(key, topic) {
-                items.push(template(topic));});
-            $("#topics").html(items.join(''));
-        }
-    });
- });
-</script>
-
 
 <a name="sponsors"></a>
 <div class="container">
@@ -301,7 +220,7 @@
         </div>
       </div>
     </div>
-      
+
     <div class="col s12 m6">
       <div class="card">
         <div class="card-image">
