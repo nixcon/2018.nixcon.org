@@ -26,7 +26,7 @@
         <div class="center grey-text text-darken-2">
           <i class="fa fa-comments"></i>
         </div>
-        <h5 class="center grey-text text-darken-2 header">Talks Discussions Hackathon</h5>
+        <h5 class="center grey-text text-darken-2 header">Talks Discussions Hacking</h5>
       </div>
     </div>
 
@@ -35,7 +35,7 @@
         <div class="center grey-text text-darken-2">
           <i class="fa fa-users"></i>
         </div>
-        <h5 class="center grey-text text-darken-2 header">100 people</h5>
+        <h5 class="center grey-text text-darken-2 header">120 people / 60 during Hackday</h5>
       </div>
     </div>
 
@@ -82,7 +82,7 @@
   <div class="row">
     <div class="col s12 m12">
       <p class="center flow-text">We are accepting proposals for talks and presentations.</p>
-      <p class="center flow-text">Deadline: 30 June</p>
+      <p class="center flow-text">Deadline: 30 July</p>
       <p class="center">If you have problems with the embedded form, you can also submit your proposal
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSdHf0tqgzKT51Wm-gQHakGnMGlVUT60sda-tSrMj3aIFJZhvQ/viewform" target="_blank">here.</a>
       </p>
@@ -110,62 +110,25 @@
 
   <div class="row">
     <div class="col s12 m12">
-      <p class="center flow-text"> Details about this year's program will be available soon.</p>
+      <p "center flow-text">We are collecting talk propositions until end of July 2018.</p>
+      <p "center flow-text">Details about the program will follow.</p>
     </div>
   </div>
 </div>
 
-<script id="talk-template" type="text/x-handlebars-template">
-  <li>
-    <div class="collapsible-header grey-text text-darken-2">
-      <span class="time">
-         {{#timeprint start duration }}
-         {{/timeprint}}
-      </span>
-      <span {{#neq title "Lunch Break" }}
-               {{#neq title "Breakfast" }}
-                  {{#neq title "Break" }}
-                     class="headline"
-                  {{/neq}}
-              {{/neq}}
-            {{/neq}}>
-            {{ title }} {{#if subtitle}} – {{ subtitle }} {{/if}}
-     </span>
-     <span>
-         {{#if persons}}
-            by {{#each persons}}
-                {{ public_name }} {{#unless @last}} and {{/unless}}
-            {{/each}}
-         {{/if}}
-      </span>
-      <span>{{#if video}}<i class="fa fa-youtube"></i>{{/if}}</span>
-      <span>{{#if slides}}<i class="fa fa-paperclip"></i>{{/if}}</span>
-
-    </div>
-    <div class="collapsible-body">
-      <p>{{{ abstract }}}</p>
-      <p>{{{ description }}}</p>
-      <p>{{#each links}}<a href="{{ this.url }}">{{ this.title }}</a><br/> {{/each}}</p>
-      <p>{{#each attachments}}<a href="https://schedule.nixcon2018.org/{{ this.url }}">{{ this.title }}</a><br/> {{/each}}</p>
-    </div>
-  </li>
-</script>
-
-<a id="hackathon" class="anchor"></a>
+<a name="hackday" class="anchor"></a>
 <div class="container">
 
   <div class="col s12 m12">
-    <h3 class="header center grey-text text-darken-2">Hackathon - Saturday, 27 October</h3>
+    <h3 class="header center grey-text text-darken-2">Hackday - 27 October (Saturday)</h3>
   </div>
-
   <div class="row">
     <div class="col s12 m12">
-      <p class="center flow-text"> We are accepting ideas for the Hackathon!</p>
-      <p class="center flow-text">
-        Please fill out
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdzIdjL2stQeUH5ZWd7MyHwVsr-928sAwOD03BG1BgSvMSPkg/viewform" target="_blank">this form</a> to propose a topic.</p>
-      <p class="center flow-text"> Deadline: 28 September</p>
-
+      <p class="center flow-text">The Hackday is a self-organizing event after the conference. It's an opportunity to network, hack on projects and ideas
+        that arose during the conference, and discuss plans for the rest of the year.</p>
+      <p class="center flow-text">The location is the same as the conference but with a different table layout, limiting the number of attendees to 60
+        people.</p>
+      <p class="center flow-text">Details about how to register will be available soon.</p>
     </div>
   </div>
 </div>
@@ -212,140 +175,109 @@
 
   <div class="row">
     <div class="col s12 m12">
-      <p class="center flow-text"> Details about how to register will be available soon.</p>
+      <p class="center flow-text">Max 120 people</p>
+      <iframe src="https://eventbrite.co.uk/tickets-external?eid=45839886334&ref=etckt" frameborder="0" height="400" width="100%"
+        vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe>
+    </div>
+    <div class="col s12 m12">
+      <p class="center flow-text">Max 60 people</p>
+      <iframe src="https://eventbrite.co.uk/tickets-external?eid=46911879695&ref=etckt" frameborder="0" height="400" width="100%"
+        vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe>
+    </div>
+    <div class="col s12 m12">
+      <a href="https://diversitytickets.org/events/168">Diversity tickets are also available</a>
     </div>
   </div>
 </div>
 
-<script id="topic-template" type="text/x-handlebars-template">
-  <div class="col s12 m6 l6"><div class="card medium">
-    <div class="card-content grey-text text-darken-2">
-      <span class="card-title">{{title}}</span>
-    <p><b>Host:</b> {{host}}</p>
-    {{#if homepage}}
-    <a href="{{homepage}}">{{homepage}}</a>
-    {{/if}}
-    <div><b>Description:</b> {{{description}}}</div>
-    {{#if required_experience}}
-    <p><b>Required Experience:</b><br\> {{required_experience}}</p>
-    {{/if}}
-  </div>
-  </div></div>
-</script>
+< a name="sponsors" class="anchor"></a>
+  <div class="container">
 
-<script>
-  $(document).ready(function () {
-    $.getJSON("./hackathon-topics.json", function (data) {
-      function compare(a, b) {
-        if (a.title < b.title)
-          return -1;
-        if (a.title > b.title)
-          return 1;
-        return 0;
-      }
-      data.sort(compare);
-      if (data.length > 0) {
-        var source = $("#topic-template").html();
-        var template = Handlebars.compile(source);
-        var items = [];
-        $.each(data, function (key, topic) {
-          items.push(template(topic));
-        });
-        $("#topics").html(items.join(''));
-      }
-    });
-  });
-</script>
-
-
-<a name="sponsors" class="anchor"></a>
-<div class="container">
-
-  <div class="col s12 m12">
-    <h3 class="header center grey-text text-darken-2">Sponsors</h3>
-  </div>
-
-
-  <div class="row nixos-sponsor">
-    <div class="col s12 m6">
-      <div class="card">
-        <div class="card-image">
-          <img class="responsive-img" src="/images/numtide.png" />
-        </div>
-        <div class="card-content">
-          <span class="card-title">Gold Sponsor</span>
-          <p>
-            <a href="https://www.numtide.com/">NumTide</a> is a Nix and DevOps consulting company. We provide build, test and deployment expertise from the
-            developer's machine to the cloud.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col s12 m6">
-      <div class="card">
-        <div class="card-image">
-          <img class="responsive-img" src="/images/tweag.svg" />
-        </div>
-        <div class="card-content">
-          <span class="card-title">Gold Sponsor</span>
-          <p>
-            <a href="https://www.tweag.io/">Tweag I/O</a> is a Software R&amp;D Lab at the heart of Europe.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col s12 m6">
-      <div class="card">
-        <div class="card-image" style="background-color: #212529;">
-          <img class="responsive-img" src="/images/serokell.svg" />
-        </div>
-        <div class="card-content">
-          <span class="card-title">Gold Sponsor</span>
-          <p>
-            <a href="https://serokell.io/">Serokell</a> is a software development, consulting, and recruiting company. Prevalent in our practice is usage
-            of functional programming and scientific methods.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col s12 m6">
-      <div class="card">
-        <div class="card-content">
-          <span class="card-title">
-            <a href="/sponsoring.html">Become a sponsor</a>
-          </span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="row">
     <div class="col s12 m12">
-      <h4 class="header center grey-text text-darken-2">Silver Sponsors</h4>
+      <h3 class="header center grey-text text-darken-2">Sponsors</h3>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col s12 m4">
-      <a href="http://container-solutions.com/">
-        <img class="responsive-img" src="/images/container_solutions.png" />
-      </a>
+
+    <div class="row nixos-sponsor">
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-image">
+            <img class="responsive-img" src="/images/numtide.png" />
+          </div>
+          <div class="card-content">
+            <span class="card-title">Gold Sponsor</span>
+            <p>
+              <a href="https://www.numtide.com/">NumTide</a> is a Nix and DevOps consulting company. We provide build, test and deployment expertise from the
+              developer's machine to the cloud.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-image">
+            <img class="responsive-img" src="/images/tweag.svg" />
+          </div>
+          <div class="card-content">
+            <span class="card-title">Gold Sponsor</span>
+            <p>
+              <a href="https://www.tweag.io/">Tweag I/O</a> is a Software R&amp;D Lab at the heart of Europe.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-image" style="background-color: #212529;">
+            <img class="responsive-img" src="/images/serokell.svg" />
+          </div>
+          <div class="card-content">
+            <span class="card-title">Gold Sponsor</span>
+            <p>
+              <a href="https://serokell.io/">Serokell</a> is a software development, consulting, and recruiting company. Prevalent in our practice is usage
+              of functional programming and scientific methods.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m6">
+        <div class="card">
+          <div class="card-content">
+            <span class="card-title">
+              <a href="/sponsoring.html">Become a sponsor</a>
+            </span>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col s12 m12">
-      <h4 class="header center grey-text text-darken-2">Bronze Sponsors</h4>
+    <div class="row">
+      <div class="col s12 m12">
+        <h4 class="header center grey-text text-darken-2">Silver Sponsors</h4>
+      </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col s12 m4">
-      <a href="http://immutablesolutions.com/">
-        <img class="responsive-img" src="/images/immutable.png" alt="Immutable Solutions" />
-      </a>
+    <div class="row">
+      <div class="col s12 m4">
+        <a href="http://container-solutions.com/">
+          <img class="responsive-img" src="/images/container_solutions.png" />
+        </a>
+      </div>
     </div>
-  </div>
 
-</div>
+    <div class="row">
+      <div class="col s12 m12">
+        <h4 class="header center grey-text text-darken-2">Bronze Sponsors</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12 m4">
+        <a href="http://immutablesolutions.com/">
+          <img class="responsive-img" src="/images/immutable.png" alt="Immutable Solutions" />
+        </a>
+      </div>
+    </div>
+
+  </div>
