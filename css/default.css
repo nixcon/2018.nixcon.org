@@ -72,6 +72,11 @@ a {
   font-weight: 500;
 }
 
+#nav-mobile {
+  display: flex;
+  justify-content: space-around;
+}
+
 nav a {
   color: #999999;
 }
@@ -90,6 +95,10 @@ nav a,
 nav ul a {
   color: #5277c3;
   font-weight: 500;
+}
+
+nav ul a {
+  padding: 0 0.5rem;
 }
 
 #content a:hover,
