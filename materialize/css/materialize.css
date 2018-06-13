@@ -4050,10 +4050,11 @@ nav .nav-wrapper {
 
 nav .button-collapse {
   float: left;
-  position: relative;
+  position: fixed;
   z-index: 1;
   height: 56px;
-  margin: 0 18px;
+  margin: 0;
+  left: 1rem;
 }
 
 nav .button-collapse i {
@@ -6933,7 +6934,8 @@ input[type=range]:focus::-ms-fill-upper {
 
 .side-nav {
   position: fixed;
-  width: 300px;
+  width: 75%;
+  max-width: 220px;
   left: 0;
   top: 0;
   margin: 0;
@@ -6969,6 +6971,7 @@ input[type=range]:focus::-ms-fill-upper {
 .side-nav li {
   float: none;
   line-height: 48px;
+  
 }
 
 .side-nav li.active {
@@ -6976,13 +6979,14 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .side-nav a {
-  color: rgba(0, 0, 0, 0.87);
+  color: #5277c3;
   display: block;
   font-size: 14px;
   font-weight: 500;
   height: 48px;
   line-height: 48px;
   padding: 0 32px;
+ 
 }
 
 .side-nav a:hover {
@@ -7017,7 +7021,7 @@ input[type=range]:focus::-ms-fill-upper {
   line-height: 48px;
   margin: 0 32px 0 0;
   width: 24px;
-  color: rgba(0, 0, 0, 0.54);
+  color: #5277c3;
 }
 
 .side-nav .divider {
