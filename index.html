@@ -156,12 +156,29 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col s4">
+      <img class="materialboxed hoverable responsive-img center-align" src="images/venue_interior_1.jpg" alt="Venue Interior">
+    </div>
+    <div class="col s4">
+      <img class="materialboxed hoverable responsive-img center-align" src="images/venue_interior_2.jpg" alt="Venue Interior">
+    </div>
+    <div class="col s4">
+      <img class="materialboxed hoverable  responsive-img center" src="images/venue_exterior_1.jpg" alt="Venue Exterior">
+    </div>
+  </div>
+
 </div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDm2yq8zlDM9-EcuxRO-v5FCEr3ywvryxs"></script>
 <script>
   google.maps.event.addDomListener(window, 'load', function () {
     initialize('coin-street-map', 51.506175, -0.110719);
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.materialboxed');
+    var instances = M.Materialbox.init(elems, options);
   });
 </script>
 
@@ -281,4 +298,4 @@
     </div>
   </div>
 
-</div>q
+</div>
