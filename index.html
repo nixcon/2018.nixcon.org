@@ -218,24 +218,73 @@
 <a name="location" class="anchor"></a>
 <div class="container">
 
-  <div class="col s12 m12">
-    <h3 class="header center grey-text text-darken-2">Location</h3>
+  <div class="row">
+    <div class="col s12 m12">
+      <h3 class="header center grey-text text-darken-2">Location</h3>
+      <address class="center">
+        Coin Street Neighourhood Centre,
+
+        <a href="https://goo.gl/maps/eVrhRvBiCit">
+          108 Stamford St, Lambeth, London SE1 9NH
+        </a>
+      </address>
+    </div>
   </div>
 
   <div class="row">
     <div class="col s12 m12">
-      <div class="map_wrapper">
-        <div class="map" id="coin-street-map"></div>
-        <div class="map_overlay">
-          <img class="responsive-img" src="images/coinstreet-logo.png" width="205" height="95" alt="Coin Street Community Builders">
-          <p class="lead">
-            <a href="https://goo.gl/maps/FLPqcJwHQnQ2" target="_blank">
-              Coin Street Neighourhood Centre
-              <br /> 108 Stamford St, Lambeth, London SE1 9NH
-            </a>
-          </p>
-        </div>
-      </div>
+      <div id="map"></div>
+      <link rel="stylesheet" type="text/css" href="https://js.api.here.com/v3/3.0/mapsjs-ui.css?dp-version=1533195059" />
+<script src="https://js.api.here.com/v3/3.0/mapsjs-core.js"></script>
+<script src="https://js.api.here.com/v3/3.0/mapsjs-service.js"></script>
+<script src="https://js.api.here.com/v3/3.0/mapsjs-ui.js"></script>
+<script src="https://js.api.here.com/v3/3.0/mapsjs-mapevents.js"></script>
+      <script>
+/**
+ * Boilerplate map initialization code starts below:
+ */
+
+//Step 1: initialize communication with the platform
+var platform = new H.service.Platform({
+  app_id: 'WfhUdEQQNDpqga8qWGNX',
+  app_code: 'hg_W4x9btsXdjGoBb-A1yQ',
+  //useHTTPS: true
+});
+var pixelRatio = window.devicePixelRatio || 1;
+var defaultLayers = platform.createDefaultLayers({
+  tileSize: pixelRatio === 1 ? 256 : 512,
+  ppi: pixelRatio === 1 ? undefined : 320
+});
+
+var mapEl = document.getElementById('map');
+mapEl.style = "height: 400px; background: grey;"
+
+//Step 2: initialize a map - this map is centered over Europe
+var map = new H.Map(document.getElementById('map'),
+  defaultLayers.normal.map,{
+  center: {
+    lat: 51.506145,
+    lng: -0.1129287
+  },
+  zoom: 15,
+  pixelRatio: pixelRatio
+});
+
+//Step 3: make the map interactive
+// MapEvents enables the event system
+// Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
+
+// Create the default UI components
+var ui = H.ui.UI.createDefault(map, defaultLayers);
+
+// Add marker
+var nixconMarker = new H.map.Marker({
+  lat: 51.506145,
+  lng:-0.1129287,
+});
+map.addObject(nixconMarker);
+      </script>
     </div>
   </div>
   <div class="row">
@@ -257,19 +306,6 @@
   </div>
 
 </div>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDm2yq8zlDM9-EcuxRO-v5FCEr3ywvryxs"></script>
-<script>
-  google.maps.event.addDomListener(window, 'load', function () {
-    initialize('coin-street-map', 51.506175, -0.110719);
-  });
-
-  document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.materialboxed');
-    var instances = M.Materialbox.init(elems, options);
-  });
-</script>
-
 
 <a name="registration" class="anchor"></a>
 <div class="container">
