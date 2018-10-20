@@ -21,7 +21,7 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "contributors.txt" $ do
+    match "googlead1fe7ef91f639f7.html" $ do
         route   idRoute
         compile copyFileCompiler
 
